@@ -1,0 +1,32 @@
+{
+  "document_name": "Consolidated Cash Flow Statement 2026.pdf",
+  "document_type": "cash_flow_statement",
+  "processing_status": "PASS",
+  "overall_confidence": 0.98,
+  "file_validation": {"file_type": "application/pdf", "is_supported": true, "is_readable": true, "page_count": 2, "size_bytes": 239938, "status": "PASS"},
+  "extracted_data": {
+    "document_title": "Consolidated Cash Flow Statement",
+    "currency": "INR million",
+    "periods": ["2026"],
+    "fields": [
+      {"key": "operating_cash_flow", "label": "Net Cash from Operating Activities", "value": 500.0, "raw_value": "500", "data_type": "number", "period": "2026", "section": "operating", "evidence": {"source_text": "Net Cash from Operating Activities 500", "page_number": 2}, "confidence": 0.98},
+      {"key": "investing_cash_flow", "label": "Net Cash from Investing Activities", "value": -120.0, "raw_value": "(120)", "data_type": "number", "period": "2026", "section": "investing", "evidence": {"source_text": "Net Cash from Investing Activities (120)", "page_number": 2}, "confidence": 0.98},
+      {"key": "financing_cash_flow", "label": "Net Cash from Financing Activities", "value": -80.0, "raw_value": "(80)", "data_type": "number", "period": "2026", "section": "financing", "evidence": {"source_text": "Net Cash from Financing Activities (80)", "page_number": 2}, "confidence": 0.98},
+      {"key": "fx_translation_adjustment", "label": "Effect of Exchange Rate Changes", "value": 5.0, "raw_value": "5", "data_type": "number", "period": "2026", "section": "cash_reconciliation", "evidence": {"source_text": "Effect of Exchange Rate Changes 5", "page_number": 2}, "confidence": 0.98},
+      {"key": "net_change_in_cash", "label": "Net Increase in Cash", "value": 305.0, "raw_value": "305", "data_type": "number", "period": "2026", "section": "cash_reconciliation", "evidence": {"source_text": "Net Increase in Cash 305", "page_number": 2}, "confidence": 0.98},
+      {"key": "opening_cash", "label": "Opening Cash", "value": 1000.0, "raw_value": "1,000", "data_type": "number", "period": "2026", "section": "cash_reconciliation", "evidence": {"source_text": "Cash at Beginning 1,000", "page_number": 2}, "confidence": 0.98},
+      {"key": "other_cash_adjustments", "label": "Cash Acquired on Amalgamation", "value": 0.0, "raw_value": "0", "data_type": "number", "period": "2026", "section": "cash_reconciliation", "evidence": {"source_text": "Cash Acquired on Amalgamation 0", "page_number": 2}, "confidence": 0.98},
+      {"key": "closing_cash", "label": "Closing Cash", "value": 1305.0, "raw_value": "1,305", "data_type": "number", "period": "2026", "section": "cash_reconciliation", "evidence": {"source_text": "Cash at End 1,305", "page_number": 2}, "confidence": 0.98}
+    ],
+    "tables": []
+  },
+  "validation": {
+    "checks": [
+      {"name": "net_change_in_cash_check", "formula": "operating_cash_flow + investing_cash_flow + financing_cash_flow + fx_translation_adjustment", "period": "2026", "operands": {"operating_cash_flow": 500.0, "investing_cash_flow": -120.0, "financing_cash_flow": -80.0, "fx_translation_adjustment": 5.0}, "calculated_value": 305.0, "reported_value": 305.0, "variance": 0.0, "status": "PASS", "notes": null},
+      {"name": "closing_cash_check", "formula": "opening_cash + net_change_in_cash + other_adjustments", "period": "2026", "operands": {"opening_cash": 1000.0, "net_change_in_cash": 305.0, "other_adjustments": 0.0}, "calculated_value": 1305.0, "reported_value": 1305.0, "variance": 0.0, "status": "PASS", "notes": null}
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {"ocr_used": true, "extraction_provider": "gemini", "processed_at": "2026-09-10T10:33:00Z", "processing_time_ms": 4010, "error_code": null}
+}

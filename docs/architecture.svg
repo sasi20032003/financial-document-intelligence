@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Financial Document Intelligence architecture</title>
+  <desc id="desc">Browser uploads flow through FastAPI validation, OCR and Gemini extraction, financial validation, persistence, and REST responses.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#56708f"/></marker>
+    <style>
+      .box{fill:#fff;stroke:#cfd8e6;stroke-width:2;rx:18}.core{fill:#eef5ff;stroke:#3472c8}.store{fill:#edf9f2;stroke:#2b8a57}.ext{fill:#fff5e5;stroke:#b7791f}
+      .title{font:700 22px Inter,Segoe UI,sans-serif;fill:#172033}.body{font:15px Inter,Segoe UI,sans-serif;fill:#58667d}.label{font:700 14px Inter,Segoe UI,sans-serif;fill:#31506f}
+      .arrow{stroke:#56708f;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="720" fill="#f5f8fc"/>
+  <text x="60" y="56" class="title" font-size="30">Financial Document Intelligence</text>
+  <text x="60" y="83" class="body">Synchronous prototype with replaceable extraction providers and persistent results</text>
+
+  <rect class="box" x="55" y="150" width="210" height="130"/>
+  <text class="title" x="85" y="190">Browser UI</text>
+  <text class="body" x="85" y="220">Upload and type selection</text>
+  <text class="body" x="85" y="246">Dashboard and result view</text>
+
+  <rect class="box core" x="345" y="120" width="245" height="190"/>
+  <text class="title" x="375" y="160">FastAPI</text>
+  <text class="body" x="375" y="190">Multipart REST endpoints</text>
+  <text class="body" x="375" y="216">OpenAPI and error envelope</text>
+  <text class="body" x="375" y="242">Request orchestration</text>
+  <text class="body" x="375" y="268">Structured Pydantic output</text>
+
+  <rect class="box" x="675" y="105" width="220" height="110"/>
+  <text class="title" x="705" y="145">Input validation</text>
+  <text class="body" x="705" y="175">Magic bytes and integrity</text>
+  <text class="body" x="705" y="198">Format, size, three pages</text>
+
+  <rect class="box ext" x="675" y="255" width="220" height="135"/>
+  <text class="title" x="705" y="295">Extraction</text>
+  <text class="body" x="705" y="325">Native PDF text layer</text>
+  <text class="body" x="705" y="350">Gemini visual OCR</text>
+  <text class="body" x="705" y="375">Fields, tables, evidence</text>
+
+  <rect class="box" x="675" y="430" width="220" height="125"/>
+  <text class="title" x="705" y="470">Financial rules</text>
+  <text class="body" x="705" y="500">Period-aware formulas</text>
+  <text class="body" x="705" y="525">PASS, FAIL, N/A</text>
+
+  <rect class="box store" x="970" y="305" width="180" height="130"/>
+  <text class="title" x="1000" y="345">Database</text>
+  <text class="body" x="1000" y="375">SQLite locally</text>
+  <text class="body" x="1000" y="400">PostgreSQL deploy</text>
+
+  <rect class="box" x="345" y="430" width="245" height="125"/>
+  <text class="title" x="375" y="470">Observability</text>
+  <text class="body" x="375" y="500">Stage and error logging</text>
+  <text class="body" x="375" y="525">Processing metadata</text>
+
+  <path class="arrow" d="M265 215 H335"/>
+  <path class="arrow" d="M590 180 H665"/>
+  <path class="arrow" d="M590 225 C625 225 625 320 665 320"/>
+  <path class="arrow" d="M785 215 V245"/>
+  <path class="arrow" d="M785 390 V420"/>
+  <path class="arrow" d="M895 325 C930 325 930 350 960 350"/>
+  <path class="arrow" d="M895 495 C940 495 940 410 960 410"/>
+  <path class="arrow" d="M665 495 H600"/>
+  <path class="arrow" d="M345 495 C300 495 300 260 275 260"/>
+  <text class="label" x="278" y="199">HTTPS</text>
+  <text class="label" x="912" y="312">JSON</text>
+  <text class="label" x="285" y="455">stored results</text>
+</svg>

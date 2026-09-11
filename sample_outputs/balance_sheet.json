@@ -1,0 +1,28 @@
+{
+  "document_name": "Consolidated Balance Sheet 2026.pdf",
+  "document_type": "balance_sheet",
+  "processing_status": "PASS",
+  "overall_confidence": 0.98,
+  "file_validation": {"file_type": "application/pdf", "is_supported": true, "is_readable": true, "page_count": 1, "size_bytes": 131719, "status": "PASS"},
+  "extracted_data": {
+    "document_title": "Consolidated Balance Sheet",
+    "currency": "INR million",
+    "periods": ["2026", "2025"],
+    "fields": [
+      {"key": "total_assets", "label": "Total Assets", "value": 150000.0, "raw_value": "150,000", "data_type": "number", "period": "2026", "section": "assets", "evidence": {"source_text": "TOTAL ASSETS 150,000", "page_number": 1}, "confidence": 0.98},
+      {"key": "total_capital_and_liabilities", "label": "Total Capital and Liabilities", "value": 150000.0, "raw_value": "150,000", "data_type": "number", "period": "2026", "section": "capital_and_liabilities", "evidence": {"source_text": "TOTAL CAPITAL AND LIABILITIES 150,000", "page_number": 1}, "confidence": 0.98},
+      {"key": "total_assets", "label": "Total Assets", "value": 140000.0, "raw_value": "140,000", "data_type": "number", "period": "2025", "section": "assets", "evidence": {"source_text": "TOTAL ASSETS 140,000", "page_number": 1}, "confidence": 0.98},
+      {"key": "total_capital_and_liabilities", "label": "Total Capital and Liabilities", "value": 140000.0, "raw_value": "140,000", "data_type": "number", "period": "2025", "section": "capital_and_liabilities", "evidence": {"source_text": "TOTAL CAPITAL AND LIABILITIES 140,000", "page_number": 1}, "confidence": 0.98}
+    ],
+    "tables": []
+  },
+  "validation": {
+    "checks": [
+      {"name": "balance_sheet_equation", "formula": "total_capital_and_liabilities = total_assets", "period": "2026", "operands": {"total_capital_and_liabilities": 150000.0}, "calculated_value": 150000.0, "reported_value": 150000.0, "variance": 0.0, "status": "PASS", "notes": null},
+      {"name": "balance_sheet_equation", "formula": "total_capital_and_liabilities = total_assets", "period": "2025", "operands": {"total_capital_and_liabilities": 140000.0}, "calculated_value": 140000.0, "reported_value": 140000.0, "variance": 0.0, "status": "PASS", "notes": null}
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {"ocr_used": true, "extraction_provider": "gemini", "processed_at": "2026-09-10T10:31:00Z", "processing_time_ms": 3210, "error_code": null}
+}

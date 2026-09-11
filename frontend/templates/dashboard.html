@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111b2e">
+  <title>{{ app_name }} | Operations</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/app.css') }}">
+  <script defer src="{{ url_for('static', path='/js/dashboard.js') }}"></script>
+</head>
+<body class="dashboard-body">
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14 3.5v4h4M9 12h6M9 15.5h6"/></svg>
+        </span>
+        <span><strong>LedgerLens</strong><small>Document Intelligence</small></span>
+      </div>
+      <div class="workspace-switcher" aria-label="Current workspace">
+        <span class="workspace-avatar">AC</span>
+        <span><small>Workspace</small><strong>Acme Finance</strong></span>
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m6 8 4 4 4-4"/></svg>
+      </div>
+      <nav class="sidebar-nav" aria-label="Primary navigation">
+        <p>Workspace</p>
+        <a class="nav-item active" href="/" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"/></svg>
+          Overview
+        </a>
+        <a class="nav-item" href="#documents">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14 3.5v4h4M9 12h6M9 15.5h6"/></svg>
+          Documents
+          <span class="nav-count" id="nav-total">0</span>
+        </a>
+        <a class="nav-item" id="review-nav" href="#documents">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3.5 7.2V12c0 4.6 3.1 7.8 8.5 9 5.4-1.2 8.5-4.4 8.5-9V7.2L12 3Z"/><path d="M12 8v5M12 16.5h.01"/></svg>
+          Review queue
+          <span class="nav-count warning" id="nav-review">0</span>
+        </a>
+        <p>Developer</p>
+        <a class="nav-item" href="/docs">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5l-3 14"/></svg>
+          API explorer
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="service-card">
+          <div class="service-heading"><span class="health-dot" id="sidebar-health-dot"></span><strong>System status</strong></div>
+          <span id="sidebar-health-copy">Checking services...</span>
+        </div>
+        <div class="user-card">
+          <span class="user-avatar">SA</span>
+          <span><strong>Finance Admin</strong><small>Operations team</small></span>
+          <span class="more-icon" aria-hidden="true"></span>
+        </div>
+      </div>
+    </aside>
+
+    <div class="mobile-scrim" id="mobile-scrim" hidden></div>
+
+    <main class="dashboard-main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button mobile-menu-button" id="mobile-menu" type="button" aria-label="Open navigation" aria-expanded="false">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+          <div class="breadcrumbs"><span>Workspace</span><b>/</b><strong>Overview</strong></div>
+        </div>
+        <div class="topbar-actions">
+          <span class="live-status" id="health-status"><i></i><span>Checking API</span></span>
+          <a class="button button-secondary topbar-docs" href="/docs">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5l-3 14"/></svg>
+            API docs
+          </a>
+          <a class="button button-primary" href="#new-extraction">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            New document
+          </a>
+        </div>
+      </header>
+
+      <div class="dashboard-content">
+        <section class="page-intro">
+          <div>
+            <p class="eyebrow">Operations dashboard</p>
+            <h1>Document operations</h1>
+            <p>Monitor extraction quality, review validation exceptions, and process incoming financial documents.</p>
+          </div>
+          <div class="date-chip">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3v3M18 3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"/></svg>
+            <span id="current-date">Today</span>
+          </div>
+        </section>
+
+        <section class="metric-grid" aria-label="Document processing summary">
+          <article class="metric-card">
+            <div class="metric-top"><span class="metric-icon blue"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14 3.5v4h4"/></svg></span><span class="metric-period">All time</span></div>
+            <span class="metric-label">Total documents</span>
+            <strong class="metric-value" id="stat-total">0</strong>
+            <span class="metric-context" id="total-context">No documents processed yet</span>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span class="metric-icon green"><svg viewBox="0 0 24 24"><path d="m5 12.5 4.2 4L19 7"/></svg></span><span class="metric-period">Processed</span></div>
+            <span class="metric-label">Successful</span>
+            <strong class="metric-value" id="stat-pass">0</strong>
+            <span class="metric-context positive" id="pass-context">Waiting for first extraction</span>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span class="metric-icon amber"><svg viewBox="0 0 24 24"><path d="M12 3 3.5 7.2V12c0 4.6 3.1 7.8 8.5 9 5.4-1.2 8.5-4.4 8.5-9V7.2L12 3Z"/><path d="M12 8v5M12 16.5h.01"/></svg></span><span class="metric-period">Action needed</span></div>
+            <span class="metric-label">Needs review</span>
+            <strong class="metric-value" id="stat-review">0</strong>
+            <span class="metric-context" id="review-context">No validation exceptions</span>
+          </article>
+          <article class="metric-card">
+            <div class="metric-top"><span class="metric-icon violet"><svg viewBox="0 0 24 24"><path d="M4 18V9M10 18V5M16 18v-7M22 18V3"/></svg></span><span class="metric-period">Success rate</span></div>
+            <span class="metric-label">Extraction health</span>
+            <strong class="metric-value" id="stat-rate">--</strong>
+            <div class="metric-progress"><span id="success-progress"></span></div>
+          </article>
+        </section>
+
+        <section class="dashboard-grid">
+          <article class="content-card documents-card" id="documents">
+            <div class="card-heading documents-heading">
+              <div><h2>Recent documents</h2><p>Latest extraction and validation results</p></div>
+              <span class="record-count" id="record-count">0 records</span>
+            </div>
+            <div class="document-toolbar">
+              <label class="search-box">
+                <span class="sr-only">Search documents</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/></svg>
+                <input id="search" type="search" placeholder="Search documents...">
+              </label>
+              <label class="filter-field">
+                <span class="sr-only">Filter by type</span>
+                <select id="type-filter">
+                  <option value="all">All types</option>
+                  <option value="invoice">Invoices</option>
+                  <option value="balance_sheet">Balance sheets</option>
+                  <option value="profit_and_loss">Profit &amp; loss</option>
+                  <option value="cash_flow_statement">Cash flow</option>
+                </select>
+              </label>
+              <label class="filter-field">
+                <span class="sr-only">Filter by status</span>
+                <select id="status-filter">
+                  <option value="all">All statuses</option>
+                  <option value="ready">Ready</option>
+                  <option value="review">Needs review</option>
+                  <option value="failed">Failed</option>
+                </select>
+              </label>
+            </div>
+            <div class="table-wrap dashboard-table-wrap">
+              <table class="documents-table">
+                <thead><tr><th>Document</th><th>Status</th><th>Confidence</th><th>Validation</th><th>Processed</th><th><span class="sr-only">Actions</span></th></tr></thead>
+                <tbody id="documents-body"></tbody>
+              </table>
+            </div>
+            <div id="empty-state" class="empty-state dashboard-empty" hidden>
+              <span class="empty-illustration"><svg viewBox="0 0 24 24"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14 3.5v4h4M9 12h6M9 15.5h4"/></svg></span>
+              <strong id="empty-title">No documents yet</strong>
+              <span id="empty-copy">Upload a financial document to create your first extraction.</span>
+              <a class="button button-secondary button-small" href="#new-extraction">Process a document</a>
+            </div>
+            <footer class="table-footer"><span id="table-summary">Showing 0 documents</span><span>Up to 200 most recent records</span></footer>
+          </article>
+
+          <aside class="content-card upload-card" id="new-extraction">
+            <div class="card-heading">
+              <div><span class="section-icon"><svg viewBox="0 0 24 24"><path d="M12 16V4M7.5 8.5 12 4l4.5 4.5M5 14v5h14v-5"/></svg></span><h2>New extraction</h2><p>Process a financial document</p></div>
+            </div>
+            <form id="upload-form">
+              <label class="field-label" for="document-type">Document type</label>
+              <div class="select-wrap">
+                <select id="document-type" name="document_type" required>
+                  <option value="">Select document type</option>
+                  <option value="invoice">Invoice</option>
+                  <option value="balance_sheet">Balance sheet</option>
+                  <option value="profit_and_loss">Profit and loss</option>
+                  <option value="cash_flow_statement">Cash flow statement</option>
+                </select>
+              </div>
+              <label class="dropzone" id="dropzone" for="document-file">
+                <input id="document-file" name="file" type="file" accept=".pdf,.jpg,.jpeg,.png,application/pdf,image/jpeg,image/png" required>
+                <span class="dropzone-icon"><svg viewBox="0 0 24 24"><path d="M12 16V4M7.5 8.5 12 4l4.5 4.5M5 14v5h14v-5"/></svg></span>
+                <span class="dropzone-title"><strong>Click to upload</strong> or drag and drop</span>
+                <span class="dropzone-help">PDF, JPG or PNG &middot; Maximum 3 pages</span>
+                <span class="file-selection" id="file-selection" hidden><strong id="file-label"></strong><small id="file-meta"></small></span>
+              </label>
+              <button id="process-button" class="button button-primary process-button" type="submit">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.2 4L19 7"/></svg>
+                <span>Process document</span>
+              </button>
+            </form>
+            <p id="upload-message" class="form-message" role="status" aria-live="polite"></p>
+            <div class="upload-notes">
+              <span><svg viewBox="0 0 24 24"><path d="M12 3 3.5 7.2V12c0 4.6 3.1 7.8 8.5 9 5.4-1.2 8.5-4.4 8.5-9V7.2L12 3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></svg>Validated before processing</span>
+              <span><svg viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"/><path d="M12 7v5l3 2"/></svg>Files processed in memory</span>
+            </div>
+
+            <section class="dataset-import" aria-labelledby="dataset-heading">
+              <div class="dataset-divider"><span>or import local dataset</span></div>
+              <div class="dataset-heading">
+                <span class="dataset-folder-icon"><svg viewBox="0 0 24 24"><path d="M3.5 6.5h6l2 2h9v10a1.5 1.5 0 0 1-1.5 1.5H5a1.5 1.5 0 0 1-1.5-1.5v-12Z"/></svg></span>
+                <div><h3 id="dataset-heading">New Dataset</h3><p id="dataset-summary">Scanning local dataset...</p></div>
+                <span class="dataset-count" id="dataset-count">--</span>
+              </div>
+              <div class="dataset-progress" id="dataset-progress" hidden>
+                <div class="dataset-progress-copy"><strong id="dataset-progress-label">Preparing files</strong><span id="dataset-progress-count">0 / 0</span></div>
+                <div class="dataset-progress-track"><span id="dataset-progress-bar"></span></div>
+                <small id="dataset-current-file">Waiting to start</small>
+              </div>
+              <p class="dataset-warning" id="dataset-warning" hidden></p>
+              <button class="button button-secondary dataset-button" id="dataset-process-button" type="button" disabled>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 6.5h6l2 2h9v10a1.5 1.5 0 0 1-1.5 1.5H5a1.5 1.5 0 0 1-1.5-1.5v-12Z"/><path d="M12 11v6M9 14h6"/></svg>
+                <span>Scanning dataset</span>
+              </button>
+              <p class="dataset-message" id="dataset-message" role="status" aria-live="polite"></p>
+            </section>
+          </aside>
+        </section>
+
+        <section class="insights-grid">
+          <article class="content-card breakdown-card">
+            <div class="card-heading compact"><div><h2>Document mix</h2><p>Volume by document type</p></div><span class="subtle-badge">All time</span></div>
+            <div id="type-breakdown" class="breakdown-list"></div>
+            <div id="breakdown-empty" class="insight-empty">Document distribution appears after your first upload.</div>
+          </article>
+          <article class="content-card activity-card">
+            <div class="card-heading compact"><div><h2>Processing activity</h2><p>Recent workflow events</p></div><span class="health-label"><i></i>Live</span></div>
+            <div id="activity-list" class="activity-list"></div>
+            <div id="activity-empty" class="insight-empty">No processing activity recorded yet.</div>
+          </article>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

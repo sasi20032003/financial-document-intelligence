@@ -1,0 +1,29 @@
+{
+  "document_name": "sample_invoice.jpg",
+  "document_type": "invoice",
+  "processing_status": "PASS",
+  "overall_confidence": 0.98,
+  "file_validation": {"file_type": "image/jpeg", "is_supported": true, "is_readable": true, "page_count": 1, "size_bytes": 248201, "status": "PASS"},
+  "extracted_data": {
+    "document_title": "Tax Invoice",
+    "currency": "USD",
+    "periods": [],
+    "fields": [
+      {"key": "invoice_number", "label": "Invoice Number", "value": "INV-23891", "raw_value": "INV-23891", "data_type": "identifier", "period": null, "section": "header", "evidence": {"source_text": "Invoice Number: INV-23891", "page_number": 1}, "confidence": 0.98},
+      {"key": "subtotal", "label": "Subtotal", "value": 12500.0, "raw_value": "USD 12,500.00", "data_type": "number", "period": null, "section": "totals", "evidence": {"source_text": "Subtotal USD 12,500.00", "page_number": 1}, "confidence": 0.98},
+      {"key": "tax_amount", "label": "Tax", "value": 625.0, "raw_value": "USD 625.00", "data_type": "number", "period": null, "section": "totals", "evidence": {"source_text": "Tax USD 625.00", "page_number": 1}, "confidence": 0.98},
+      {"key": "discount", "label": "Discount", "value": 0.0, "raw_value": "USD 0.00", "data_type": "number", "period": null, "section": "totals", "evidence": {"source_text": "Discount USD 0.00", "page_number": 1}, "confidence": 0.98},
+      {"key": "total_amount", "label": "Total Amount Due", "value": 13125.0, "raw_value": "USD 13,125.00", "data_type": "number", "period": null, "section": "totals", "evidence": {"source_text": "Total Amount Due: USD 13,125.00", "page_number": 1}, "confidence": 0.98}
+    ],
+    "tables": [{"name": "line_items", "title": "Invoice line items", "page_number": 1, "columns": ["Description", "Quantity", "Unit Price", "Amount"], "rows": [["Service A", "1", "12500.00", "12500.00"]]}]
+  },
+  "validation": {
+    "checks": [
+      {"name": "invoice_total_check", "formula": "subtotal + tax_amount - discount", "period": null, "operands": {"subtotal": 12500.0, "tax_amount": 625.0, "discount": 0.0}, "calculated_value": 13125.0, "reported_value": 13125.0, "variance": 0.0, "status": "PASS", "notes": null},
+      {"name": "line_item_1_check", "formula": "quantity * unit_price", "period": null, "operands": {"quantity": 1.0, "unit_price": 12500.0}, "calculated_value": 12500.0, "reported_value": 12500.0, "variance": 0.0, "status": "PASS", "notes": null}
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {"ocr_used": true, "extraction_provider": "gemini", "processed_at": "2026-09-10T10:30:00Z", "processing_time_ms": 2840, "error_code": null}
+}

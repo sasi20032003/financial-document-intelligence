@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Document result  -  {{ app_name }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/css/app.css') }}">
+  <script defer src="{{ url_for('static', path='/js/result.js') }}"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true">DI</span>
+      <span><strong>Document Intelligence</strong><small>Financial extraction and validation</small></span>
+    </a>
+    <a class="button button-secondary" href="/">Back to dashboard</a>
+  </header>
+  <main class="page-shell result-shell">
+    <section id="result-header" class="result-header">
+      <p class="eyebrow">Stored processing result</p>
+      <h1 id="document-name">Loading result</h1>
+      <div id="result-meta" class="meta-row"></div>
+      <p id="result-message" class="form-message" role="status" aria-live="polite"></p>
+    </section>
+
+    <nav class="result-nav" aria-label="Result sections">
+      <a href="#fields">Fields</a><a href="#tables">Tables</a><a href="#validations">Validations</a><a href="#raw-json">Raw JSON</a>
+    </nav>
+
+    <section id="overview" class="stats result-stats"></section>
+    <section id="fields" class="panel">
+      <div class="section-heading"><div><p class="eyebrow">Grounded values</p><h2>Extracted fields</h2></div></div>
+      <div id="fields-content"></div>
+    </section>
+    <section id="tables" class="panel">
+      <div class="section-heading"><div><p class="eyebrow">Source structure</p><h2>Extracted tables</h2></div></div>
+      <div id="tables-content"></div>
+    </section>
+    <section id="validations" class="panel">
+      <div class="section-heading"><div><p class="eyebrow">Deterministic checks</p><h2>Financial validation</h2></div></div>
+      <div id="validations-content"></div>
+    </section>
+    <section id="raw-json" class="panel">
+      <div class="section-heading">
+        <div><p class="eyebrow">Machine-readable response</p><h2>Raw structured JSON</h2></div>
+        <button id="copy-json" class="button button-secondary" type="button">Copy JSON</button>
+      </div>
+      <pre id="json-content" tabindex="0"></pre>
+    </section>
+  </main>
+</body>
+</html>

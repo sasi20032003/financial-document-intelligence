@@ -1,0 +1,33 @@
+{
+  "document_name": "batch1-1109.jpg",
+  "document_type": "invoice",
+  "processing_status": "FAILED",
+  "overall_confidence": null,
+  "file_validation": {
+    "file_type": "image/jpeg",
+    "is_supported": true,
+    "is_readable": false,
+    "page_count": 1,
+    "size_bytes": 193882,
+    "status": "FAILED"
+  },
+  "extracted_data": {
+    "document_title": null,
+    "currency": null,
+    "periods": [],
+    "fields": [],
+    "tables": []
+  },
+  "validation": {
+    "checks": [],
+    "overall_status": "NOT_APPLICABLE",
+    "issues": ["The scanned document could not be read reliably."]
+  },
+  "processing_metadata": {
+    "ocr_used": true,
+    "extraction_provider": "gemini",
+    "processed_at": "2026-09-10T10:34:00Z",
+    "processing_time_ms": 91042,
+    "error_code": "MODEL_PROVIDER_ERROR"
+  }
+}

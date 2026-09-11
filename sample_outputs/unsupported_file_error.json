@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "UNSUPPORTED_FILE_TYPE",
+    "message": "Only PDF, JPG, JPEG, and PNG documents are supported."
+  }
+}

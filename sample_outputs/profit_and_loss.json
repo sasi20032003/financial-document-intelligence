@@ -1,0 +1,33 @@
+{
+  "document_name": "Consolidated Profit & Loss 2026.pdf",
+  "document_type": "profit_and_loss",
+  "processing_status": "PASS",
+  "overall_confidence": 0.98,
+  "file_validation": {"file_type": "application/pdf", "is_supported": true, "is_readable": true, "page_count": 1, "size_bytes": 156956, "status": "PASS"},
+  "extracted_data": {
+    "document_title": "Consolidated Profit and Loss Account",
+    "currency": "INR million",
+    "periods": ["2026"],
+    "fields": [
+      {"key": "interest_earned", "label": "Interest Earned", "value": 1000.0, "raw_value": "1,000", "data_type": "number", "period": "2026", "section": "income", "evidence": {"source_text": "Interest Earned 1,000", "page_number": 1}, "confidence": 0.98},
+      {"key": "other_income", "label": "Other Income", "value": 200.0, "raw_value": "200", "data_type": "number", "period": "2026", "section": "income", "evidence": {"source_text": "Other Income 200", "page_number": 1}, "confidence": 0.98},
+      {"key": "total_income", "label": "Total Income", "value": 1200.0, "raw_value": "1,200", "data_type": "number", "period": "2026", "section": "income", "evidence": {"source_text": "Total Income 1,200", "page_number": 1}, "confidence": 0.98},
+      {"key": "interest_expended", "label": "Interest Expended", "value": 400.0, "raw_value": "400", "data_type": "number", "period": "2026", "section": "expenditure", "evidence": {"source_text": "Interest Expended 400", "page_number": 1}, "confidence": 0.98},
+      {"key": "operating_expenses", "label": "Operating Expenses", "value": 300.0, "raw_value": "300", "data_type": "number", "period": "2026", "section": "expenditure", "evidence": {"source_text": "Operating Expenses 300", "page_number": 1}, "confidence": 0.98},
+      {"key": "provisions_and_contingencies", "label": "Provisions and Contingencies", "value": 100.0, "raw_value": "100", "data_type": "number", "period": "2026", "section": "expenditure", "evidence": {"source_text": "Provisions and Contingencies 100", "page_number": 1}, "confidence": 0.98},
+      {"key": "total_expenditure", "label": "Total Expenditure", "value": 800.0, "raw_value": "800", "data_type": "number", "period": "2026", "section": "expenditure", "evidence": {"source_text": "Total Expenditure 800", "page_number": 1}, "confidence": 0.98},
+      {"key": "profit_before_minority_interest", "label": "Profit before Minority Interest", "value": 400.0, "raw_value": "400", "data_type": "number", "period": "2026", "section": "profit", "evidence": {"source_text": "Profit before Minority Interest 400", "page_number": 1}, "confidence": 0.98}
+    ],
+    "tables": []
+  },
+  "validation": {
+    "checks": [
+      {"name": "total_income_check", "formula": "interest_earned + other_income", "period": "2026", "operands": {"interest_earned": 1000.0, "other_income": 200.0}, "calculated_value": 1200.0, "reported_value": 1200.0, "variance": 0.0, "status": "PASS", "notes": null},
+      {"name": "total_expenditure_check", "formula": "interest_expended + operating_expenses + provisions_and_contingencies", "period": "2026", "operands": {"interest_expended": 400.0, "operating_expenses": 300.0, "provisions_and_contingencies": 100.0}, "calculated_value": 800.0, "reported_value": 800.0, "variance": 0.0, "status": "PASS", "notes": null},
+      {"name": "profit_before_minority_check", "formula": "total_income - total_expenditure", "period": "2026", "operands": {"total_income": 1200.0, "total_expenditure": 800.0}, "calculated_value": 400.0, "reported_value": 400.0, "variance": 0.0, "status": "PASS", "notes": null}
+    ],
+    "overall_status": "PASS",
+    "issues": []
+  },
+  "processing_metadata": {"ocr_used": true, "extraction_provider": "gemini", "processed_at": "2026-09-10T10:32:00Z", "processing_time_ms": 3195, "error_code": null}
+}

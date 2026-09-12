@@ -12,3 +12,4 @@ htmlcov/
 .coverage
 New Dataset/
 *.docx
+.env.local

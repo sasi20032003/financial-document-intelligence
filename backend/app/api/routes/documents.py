@@ -38,6 +38,20 @@ DATASET_FOLDER_TYPES = {
 }
 
 
+@router.get("", tags=["health"])
+@router.get("/", tags=["health"], include_in_schema=False)
+def api_root(settings: Settings = Depends(get_settings)) -> dict[str, str]:
+    """Describe the deployed API from its base URL."""
+    return {
+        "name": settings.app_name,
+        "version": settings.app_version,
+        "status": "ok",
+        "documentation": "/docs",
+        "health": "/api/v1/health",
+        "documents": "/api/v1/documents",
+    }
+
+
 def _dataset_document_type(relative_path: Path) -> DocumentType | None:
     for part in relative_path.parts[:-1]:
         document_type = DATASET_FOLDER_TYPES.get(part.casefold())
